@@ -1,0 +1,21 @@
+-r requirements.txt
+# Please pinpoint your dependencies versions when you start the project
+fire
+requests
+black
+pre-commit
+pip-licenses
+flake8
+flake8-blind-except
+flake8-bugbear
+flake8-builtins
+flake8-comprehensions
+flake8-debugger
+flake8-docstrings
+flake8-quotes
+flake8-string-format
+pytest
+bandit
+prospector
+mypy
+coverage

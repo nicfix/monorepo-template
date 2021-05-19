@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  app:
+    container_name: app
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    image: app
+    networks:
+      - app-net
+    ports:
+      - 3000:3000
+    stdin_open: true
+    volumes:
+       - ./app:/usr/src/app
+       - /usr/src/app/node_modules
+
+  api:
+    container_name: api
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    image: api
+    networks:
+      - api-net
+      - app-net
+    ports:
+      - 8080:8080
+    volumes:
+      - ./api:/usr/src/app
+
+
+networks:
+  api-net:
+  app-net:
+volumes:
+  persistance:
