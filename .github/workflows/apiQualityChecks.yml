@@ -1,11 +1,6 @@
 name: API Quality Checks
 
-on:
-  pull_request:
-    branches: 
-      - "*"
-    paths:
-      - "api/**"
+on: [push]
 
 jobs:
   build:
