@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      APP_WORKING_DIR: app
+      WORKING_DIR: app
 
     steps:
     - uses: actions/checkout@v2
@@ -22,28 +22,28 @@ jobs:
         node-version: 14.x        
 
     - name: Installation of Dependencies
-      working-directory: ${{ env.APP_WORKING_DIR }}
+      working-directory: ${{ env.WORKING_DIR }}
       run: |
         npm ci --ignore-scripts
       env:
         CI: true
 
     - name: Unit tests
-      working-directory: ${{ env.APP_WORKING_DIR }}
+      working-directory: ${{ env.WORKING_DIR }}
       run: |
-        npm run test:report
+        npm run test
       env:
         CI: true
     
     - name: Vulnerabilities check
-      working-directory: ${{ env.APP_WORKING_DIR }}
+      working-directory: ${{ env.WORKING_DIR }}
       run: |
         npm audit --audit-level=high --production
       env:
         CI: true
 
     - name: Build test
-      working-directory: ${{ env.APP_WORKING_DIR }}
+      working-directory: ${{ env.WORKING_DIR }}
       run: |
         npm run build
       env:
