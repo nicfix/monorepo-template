@@ -15,7 +15,7 @@ jobs:
         python-version: [ 3.8 ]
 
     env:
-      WORKING_DIR: /api
+      WORKING_DIR: api
 
     steps:
       - name: Check Out
