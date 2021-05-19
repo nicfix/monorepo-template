@@ -1,18 +1,21 @@
 name: API Quality Checks
 
-on: [push]
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '*.*'
 
 jobs:
   build:
-    
     runs-on: ubuntu-latest
-    
     strategy:
       matrix:
-        python-version: [3.8]
+        python-version: [ 3.8 ]
 
     env:
-      - WORKING_DIR: /api
+      WORKING_DIR: /api
 
     steps:
       - name: Check Out
