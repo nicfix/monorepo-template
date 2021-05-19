@@ -19,6 +19,7 @@ $ pip install -r requirements.txt
 ```
 # Install the necessary dev commands
 $ pip install -r requirements-dev.txt
+$ pre-commit install
 ```
 
 ## Start development server

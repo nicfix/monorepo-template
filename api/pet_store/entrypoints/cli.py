@@ -61,5 +61,19 @@ class CLI(object):
         invoke.run("pip install -r requirements-dev.txt")
         invoke.run("pre-commit install")
 
+    def check_dependencies_vulnerabilities(self):
+        """
+        Checks all the dependencies for known vulnerabilities
+        """
+        invoke.run("pip install -r requirements-dev.txt")
+        invoke.run("safety check")
+
+    def check_vulnerabilities(self):
+        """
+        Checks all the dependencies for known vulnerabilities
+        """
+        invoke.run("pip install -r requirements-dev.txt")
+        invoke.run("bandit pet_store")
+
 
 cli = CLI()
