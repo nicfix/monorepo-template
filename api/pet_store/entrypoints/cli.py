@@ -73,7 +73,7 @@ class CLI(object):
         Checks all the dependencies for known vulnerabilities
         """
         invoke.run("pip install -r requirements-dev.txt")
-        invoke.run("bandit pet_store")
+        invoke.run("bandit -r pet_store")
 
 
 cli = CLI()
