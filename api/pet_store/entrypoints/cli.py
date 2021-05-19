@@ -9,7 +9,7 @@ class CLI(object):
         Runs the tests and calculates the coverage.
         """
         try:
-            invoke.run("coverage run --source=food_planner,account,api -m pytest -qq")
+            invoke.run("coverage run --source=pet_store -m pytest -qq")
             invoke.run("coverage report --fail-under=70")
         except UnexpectedExit as e:
             print("Coverage failed.")
