@@ -1,6 +1,7 @@
 from uuid import UUID
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from pet_store.infrastructure.bootstrap import bootstrap
 from pet_store.services import queries, commands
@@ -8,6 +9,17 @@ from pet_store.services.commands import AddPetCommand
 from pet_store.services.dtos import PetDTO, PetsPageDTO
 
 app = FastAPI()
+
+origins = ["http://localhost:3000"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    expose_headers=["Access-Control-Allow-Origin"],
+)
 
 # Initialize infrastructure (SQLAlchemy mappings, session provider, etc)
 bootstrap()
