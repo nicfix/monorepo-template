@@ -21,20 +21,12 @@ def add_pet(dto: AddPetCommand) -> PetDTO:
     :return: PetsPageDTO, the pets page Data Transfer Object
     """
 
-
     uow = uow_provider()
     with uow:
         repo = uow.pets
         id = uuid.uuid4()
-        pet = Pet(
-            id=id,
-            **dto.dict()
-        )
+        pet = Pet(id=id, **dto.dict())
         pet.id = repo.add(pet)
         uow.commit()
 
-        return PetDTO(
-            id=str(pet.id),
-            name=pet.name,
-            age=pet.age
-        )
+        return PetDTO(id=str(pet.id), name=pet.name, age=pet.age)
