@@ -36,7 +36,7 @@ def get_pet(pet_id: UUID) -> PetDTO:
 
 
 @app.post("/pets", response_model=PetDTO)
-def get_pet(pet_body: AddPetCommand) -> PetDTO:
+def add_pet(pet_body: AddPetCommand) -> PetDTO:
     """
     Get a pet by id.
 
