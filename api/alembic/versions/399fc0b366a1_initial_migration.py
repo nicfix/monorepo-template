@@ -1,8 +1,7 @@
 """Initial migration
 
 Revision ID: 399fc0b366a1
-Revises: 
-Create Date: 2021-05-21 09:40:12.024469
+Revises:Create Date: 2021-05-21 09:40:12.024469
 
 """
 import sqlalchemy as sa
