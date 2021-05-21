@@ -3,8 +3,9 @@ from uuid import UUID
 from fastapi import FastAPI
 
 from pet_store.infrastructure.bootstrap import bootstrap
-from pet_store.services import queries
-from pet_store.services.queries import PetsPageDTO, PetDTO
+from pet_store.services import queries, commands
+from pet_store.services.commands import AddPetCommand
+from pet_store.services.dtos import PetDTO, PetsPageDTO
 
 app = FastAPI()
 
@@ -32,6 +33,17 @@ def get_pet(pet_id: UUID) -> PetDTO:
     :return:
     """
     return queries.get_pet(pet_id)
+
+
+@app.post("/pets", response_model=PetDTO)
+def get_pet(pet_body: AddPetCommand) -> PetDTO:
+    """
+    Get a pet by id.
+
+    :param pet_body:PetDTO
+    :return:
+    """
+    return commands.add_pet(pet_body)
 
 
 @app.get("/healthy")

@@ -75,5 +75,13 @@ class CLI(object):
         invoke.run("pip install -r requirements-dev.txt")
         invoke.run("bandit -r pet_store")
 
+    def migrate_database(self):
+        invoke.run("pip install -r requirements-dev.txt")
+        invoke.run("alembic upgrade head")
+
+    def autogenerate_migrations(self, comment: str):
+        invoke.run("pip install -r requirements-dev.txt")
+        invoke.run(f'alembic revision --autogenerate -m "{comment}"')
+
 
 cli = CLI()
